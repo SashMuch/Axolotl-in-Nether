@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://chef8me20ggue"]
+
+[ext_resource type="Script" uid="uid://by47pgbmye0yh" path="res://script/player.gd" id="1_awuq2"]
+[ext_resource type="Texture2D" uid="uid://cfaa2lnfvwnju" path="res://asset/import/brackeys_platformer_assets/sprites/2026-10-19-200623-Dessin_16.png" id="2_awuq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(13, 15)
+
+[sub_resource type="Animation" id="Animation_awuq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3mo28"]
+resource_name = "marche"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8xxiv"]
+resource_name = "saut dessandant"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_i3lod"]
+resource_name = "saut montant"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xxiv"]
+_data = {
+&"RESET": SubResource("Animation_awuq2"),
+&"marche": SubResource("Animation_3mo28"),
+&"saut dessandant": SubResource("Animation_8xxiv"),
+&"saut montant": SubResource("Animation_i3lod")
+}
+
+[node name="player" type="CharacterBody2D" unique_id=1186010361]
+script = ExtResource("1_awuq2")
+SPEED = 75.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=608934503]
+position = Vector2(-7.17e-43, 0)
+texture = ExtResource("2_awuq2")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=143250172]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=384550324]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="paramtre" type="Node" parent="." unique_id=1078814853]
+
+[node name="animation" type="Node" parent="paramtre" unique_id=1154658519]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="paramtre/animation" unique_id=1453599426]
+libraries/ = SubResource("AnimationLibrary_8xxiv")

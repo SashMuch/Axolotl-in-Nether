@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bjukb0tddew2i"]
+
+[ext_resource type="Script" uid="uid://c02h0ttcfew3q" path="res://script/enemy.gd" id="1_f87vc"]
+[ext_resource type="Texture2D" uid="uid://bhto2b7rngwig" path="res://asset/import/brackeys_platformer_assets/sprites/TileMapPlaceholder.png" id="2_8u16h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f87vc"]
+size = Vector2(20, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u16h"]
+size = Vector2(16, 2)
+
+[node name="enemy" type="CharacterBody2D" unique_id=1359131004]
+z_index = 1
+script = ExtResource("1_f87vc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=911571241]
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1946963024]
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8u16h")
+hframes = 8
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=800151168]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=558466976]
+target_position = Vector2(12, 0)
+
+[node name="Area2D_kill" type="Area2D" parent="." unique_id=708423045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_kill" unique_id=2032314536]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_f87vc")
+
+[node name="Area2D_kill_enemy" type="Area2D" parent="." unique_id=1722980833]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_kill_enemy" unique_id=406150868]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_8u16h")
+
+[connection signal="body_entered" from="Area2D_kill" to="." method="_on_area_2d_kill_body_entered"]
+[connection signal="body_entered" from="Area2D_kill_enemy" to="." method="_on_area_2d_kill_enemy_body_entered"]
