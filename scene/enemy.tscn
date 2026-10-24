@@ -7,13 +7,11 @@
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f87vc"]
-size = Vector2(20, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u16h"]
-size = Vector2(16, 2)
+size = Vector2(20, 17)
 
 [node name="enemy" type="CharacterBody2D" unique_id=1359131004]
 z_index = 1
+input_pickable = true
 script = ExtResource("1_f87vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=911571241]
@@ -34,14 +32,7 @@ target_position = Vector2(12, 0)
 [node name="Area2D_kill" type="Area2D" parent="." unique_id=708423045]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_kill" unique_id=2032314536]
-position = Vector2(0, 5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_f87vc")
 
-[node name="Area2D_kill_enemy" type="Area2D" parent="." unique_id=1722980833]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_kill_enemy" unique_id=406150868]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_8u16h")
-
 [connection signal="body_entered" from="Area2D_kill" to="." method="_on_area_2d_kill_body_entered"]
-[connection signal="body_entered" from="Area2D_kill_enemy" to="." method="_on_area_2d_kill_enemy_body_entered"]

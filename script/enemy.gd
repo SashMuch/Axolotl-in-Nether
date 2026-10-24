@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 2000
 var direction = 1
+var vie = 200
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -34,8 +35,16 @@ func set_direction():
 func _on_area_2d_kill_body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		get_tree().reload_current_scene.call_deferred()
+	
+"""func _input_Event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			queue_free()"""
 
+func prendre_degats(degats):
+	vie -= degats
 
-func _on_area_2d_kill_enemy_body_entered(body: Node2D) -> void:
-	if body.name == "player":
+	print("Vie de l'ennemi :", vie)
+
+	if vie <= 0:
 		queue_free()

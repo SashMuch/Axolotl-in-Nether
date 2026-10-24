@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmt6m7iwewdvo"
-path="res://.godot/imported/2026-10-22-111422-Dessin_10_6.png-48ac429a33ae060322cc6e395d07f2c7.ctex"
+uid="uid://b8wawvdeas1js"
+path="res://.godot/imported/2026-10-23-132607-Dessin_20.png-5f5e9245527cde9dd8209e2047cb2eaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bg/2026-10-22-111422-Dessin_10_6.png"
-dest_files=["res://.godot/imported/2026-10-22-111422-Dessin_10_6.png-48ac429a33ae060322cc6e395d07f2c7.ctex"]
+source_file="res://asset/import/brackeys_platformer_assets/sprites/2026-10-23-132607-Dessin_20.png"
+dest_files=["res://.godot/imported/2026-10-23-132607-Dessin_20.png-5f5e9245527cde9dd8209e2047cb2eaa.ctex"]
 
 [params]
 
