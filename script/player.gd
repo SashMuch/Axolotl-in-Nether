@@ -3,18 +3,20 @@ extends CharacterBody2D
 var ralentire = false
 @export var SPEED = 300.0
 const JUMP_VELOCITY = -300
+var temps_tir = 0
 
+var dash_speed = 300
+var dashing = false
+var can_dash = true
 
 @onready var animation_player: AnimationPlayer = $paramtre/animation/AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var cpu_particles_2d: CPUParticles2D = $Marker2D/CPUParticles2D
-@onready var marker_2d: Marker2D = $Marker2D
-@onready var ray_cast_2d: RayCast2D = $Marker2D/RayCast2D
+@export var goutte_scene: PackedScene
+@onready var marker_2d_2: Marker2D = $Marker2D2
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_agane_timer: Timer = $DashAganeTimer
 
-func _process(delta):
-	marker_2d.look_at(get_global_mouse_position())
-
-	cpu_particles_2d.emitting = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+func _process(_delta):
 	if Input.is_action_just_pressed("ralentire") and ralentire == false:
 		temp.vitesse = 0.2
 		ralentire = true
@@ -24,8 +26,6 @@ func _process(delta):
 		ralentire = false
 		return
 		
-func _ready():
-	ray_cast_2d.add_exception(self)
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,37 +34,54 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("saut") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("gauche", "droite")
-	if direction:
-		velocity.x = direction * SPEED
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dashing = true
+		can_dash = false
+		dash_timer.start()
+		dash_agane_timer.start()
+	if dashing:
+		velocity.x = direction * dash_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	var temps_degats = 0.0
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	marker_2d.look_at(get_global_mouse_position())
+	marker_2d_2.look_at(get_global_mouse_position())
+	temps_tir -= delta
 
-	var tire = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-	cpu_particles_2d.emitting = tire
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if temps_tir <= 0:
+			for i in range(20):
+				tirer()
+			temps_tir = 0.3
+	else:
+		temps_tir = 0
+			
 
-	temps_degats -= delta
-
-	if tire and temps_degats <= 0:
-		temps_degats = 0.2
-
-		ray_cast_2d.force_raycast_update()
-
-		if ray_cast_2d.is_colliding():
-			var objet = ray_cast_2d.get_collider()
-
-			if objet.has_method("prendre_degats"):
-				objet.prendre_degats(1)
 		
 	animation_ubdate(direction)
 	move_and_slide()
+	
+func tirer():
+	var goutte = goutte_scene.instantiate()
+
+	var angle = marker_2d_2.global_rotation + deg_to_rad(randf_range(-4, 4))
+
+	goutte.direction = Vector2.RIGHT.rotated(angle)
+
+	goutte.vitesse = randf_range(300, 450)
+
+	get_tree().current_scene.add_child(goutte)
+
+	goutte.global_position = marker_2d_2.global_position
+
+	goutte.scale = Vector2.ONE * randf_range(0.1,0.12)
 	
 func animation_ubdate(dir):
 	if velocity.y < 0:
@@ -88,13 +105,11 @@ func animation_ubdate(dir):
 			animation_player.play("marche")
 		if dir == 0:
 			animation_player.play("RESET")
-		
-"""func _input(_event):
-	if Input.is_action_just_pressed("ralentire") and ralentire == false:
-		temp.vitesse = 0.2
-		ralentire = true
-		return
-	if Input.is_action_just_pressed("ralentire") and ralentire == true:
-		temp.vitesse = 1.0
-		ralentire = false
-		return"""
+
+
+func _on_dash_timer_timeout() -> void:
+	dashing = false
+
+
+func _on_dash_agane_timer_timeout() -> void:
+	can_dash = true

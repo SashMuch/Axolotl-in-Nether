@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d12k55hb6vhwf"]
+
+[ext_resource type="Script" uid="uid://blep4vdkedbme" path="res://script/goute.gd" id="1_osa7g"]
+[ext_resource type="Texture2D" uid="uid://bhto2b7rngwig" path="res://asset/import/brackeys_platformer_assets/sprites/TileMapPlaceholder.png" id="2_4dp5r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="goute" type="Area2D" unique_id=700910590]
+z_index = 1
+position = Vector2(199, 80)
+scale = Vector2(0.12, 0.12)
+script = ExtResource("1_osa7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1456088799]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1875904460]
+scale = Vector2(1.75, 1.7500001)
+texture = ExtResource("2_4dp5r")
+hframes = 8
+vframes = 8
+frame = 2

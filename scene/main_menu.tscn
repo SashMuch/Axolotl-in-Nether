@@ -1,0 +1,285 @@
+[gd_scene format=3 uid="uid://cee2lx01wfrym"]
+
+[ext_resource type="FontFile" uid="uid://yvfky04jek4q" path="res://asset/import/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_3er1b"]
+[ext_resource type="Script" uid="uid://b8tsxl638b6x8" path="res://script/menu.gd" id="2_2fwvj"]
+[ext_resource type="Texture2D" uid="uid://i86all3dwpiv" path="res://asset/import/hovered.png" id="2_hxu56"]
+[ext_resource type="Texture2D" uid="uid://2ovrc4q7try6" path="res://asset/import/clicked.png" id="4_0iwki"]
+[ext_resource type="Script" uid="uid://xmayfbt30gxr" path="res://script/menu_parametre.gd" id="5_ictww"]
+[ext_resource type="TileSet" uid="uid://cl2b3wuroq36p" path="res://tilemaps/world.tres" id="5_sepwh"]
+[ext_resource type="PackedScene" uid="uid://chef8me20ggue" path="res://scene/charachter/player.tscn" id="6_14wem"]
+[ext_resource type="FontFile" uid="uid://csrdn5apf2ngl" path="res://asset/import/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="7_2atga"]
+[ext_resource type="Texture2D" uid="uid://bcjse5cjnmg0u" path="res://bg/2026-10-22-111414-Dessin_10_5.png" id="8_hmxu4"]
+[ext_resource type="Texture2D" uid="uid://cgigvqyf817qk" path="res://bg/2026-10-24-132549-Dessin_10_6.png" id="9_ictww"]
+[ext_resource type="Texture2D" uid="uid://4jwv1gyb33hl" path="res://bg/2026-10-22-135334-Dessin_10_11.png" id="10_1o50l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
+bg_color = Color(0.978331, 0.37216452, 0.28282183, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5884081, 0.11533711, 0.052733704, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.10747976, 0.10747973, 0.10747973, 0.6)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Theme" id="Theme_yf5fn"]
+Label/fonts/font = ExtResource("1_3er1b")
+Panel/styles/panel = SubResource("StyleBoxFlat_57qmd")
+
+[node name="main_menu" type="CanvasLayer" unique_id=717449997]
+
+[node name="menu_principal" type="Control" parent="." unique_id=212470678]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_yf5fn")
+script = ExtResource("2_2fwvj")
+
+[node name="Panel" type="Panel" parent="menu_principal" unique_id=208537638]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.25
+offset_top = -160.25
+offset_right = 235.25
+offset_bottom = 160.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu_principal/Panel" unique_id=1475027315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.5
+offset_top = 20.5
+offset_right = -23.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_titre" type="Label" parent="menu_principal/Panel/VBoxContainer" unique_id=738807831]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "axolotl in nether"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="menu_principal/Panel/VBoxContainer" unique_id=194411255]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="TextureButton_play" type="TextureButton" parent="menu_principal/Panel/VBoxContainer" unique_id=1952928795]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_hxu56")
+texture_pressed = ExtResource("4_0iwki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="menu_principal/Panel/VBoxContainer/TextureButton_play" unique_id=506823235]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+
+[node name="TextureButton_option" type="TextureButton" parent="menu_principal/Panel/VBoxContainer" unique_id=480409173]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_hxu56")
+texture_pressed = ExtResource("4_0iwki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="menu_principal/Panel/VBoxContainer/TextureButton_option" unique_id=1409989051]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OPTION"
+
+[node name="TextureButton_quit" type="TextureButton" parent="menu_principal/Panel/VBoxContainer" unique_id=188551863]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_hxu56")
+texture_pressed = ExtResource("4_0iwki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="menu_principal/Panel/VBoxContainer/TextureButton_quit" unique_id=1773107408]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+
+[node name="menu_parametre" type="Control" parent="." unique_id=1132386198]
+visible = false
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_yf5fn")
+script = ExtResource("5_ictww")
+
+[node name="Panel" type="Panel" parent="menu_parametre" unique_id=2131004958]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.25
+offset_top = -160.25
+offset_right = 235.25
+offset_bottom = 160.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu_parametre/Panel" unique_id=659428486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.5
+offset_top = 20.5
+offset_right = -23.5
+offset_bottom = -20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_titre" type="Label" parent="menu_parametre/Panel/VBoxContainer" unique_id=860788158]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "axolotl in nether"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="menu_parametre/Panel/VBoxContainer" unique_id=1663665280]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="TextureButton__retoure" type="TextureButton" parent="menu_parametre/Panel/VBoxContainer" unique_id=1758147961]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_hxu56")
+texture_pressed = ExtResource("4_0iwki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="menu_parametre/Panel/VBoxContainer/TextureButton__retoure" unique_id=745327835]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RETOUR"
+
+[node name="TextureButton_son" type="TextureButton" parent="menu_parametre/Panel/VBoxContainer" unique_id=564975266]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_hxu56")
+texture_pressed = ExtResource("4_0iwki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="menu_parametre/Panel/VBoxContainer/TextureButton_son" unique_id=1054834654]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SON"
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1478191557]
+scale = Vector2(3, 3)
+tile_set = ExtResource("5_sepwh")
+format = 2
+layer_0/tile_data = PackedInt32Array(851967, 2, 0, 786431, 2, 0, 720895, 2, 0, 655359, 2, 0, 327679, 2, 0, 393215, 2, 0, 458751, 2, 0, 524287, 2, 0, 589823, 2, 0, 262143, 2, 0, 196607, 2, 0, 131071, 2, 0, 65535, 2, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 2, 0, -65523, 2, 0, -65522, 2, 0, -65521, 2, 0, -65520, 2, 0, -65519, 2, 0, -65518, 2, 0, -65517, 2, 0, -65516, 2, 0, -65515, 2, 0, -65514, 2, 0, -65513, 2, 0, 393240, 2, 0, 327704, 2, 0, 262168, 2, 0, 196632, 2, 0, 131096, 2, 0, 65560, 2, 0, 24, 2, 0, -65512, 2, 0, 458776, 2, 0, 524312, 2, 0, 589848, 2, 0, 655384, 2, 0, 720920, 2, 0, 786456, 2, 0, 720896, 2, 2, 720897, 2, 2, 720898, 2, 2, 720899, 2, 2, 720900, 2, 2, 720901, 2, 2, 720902, 2, 2, 720903, 2, 2, 720904, 2, 2, 720905, 2, 2, 720906, 2, 2, 720907, 131074, 2, 786444, 2, 2, 786445, 2, 2, 786446, 2, 2, 786447, 2, 2, 786448, 2, 2, 786449, 2, 2, 786450, 2, 2, 786451, 2, 2, 786452, 2, 2, 786453, 2, 2, 786454, 2, 2, 786455, 2, 2, 786432, 2, 0, 851968, 2, 0, 917504, 2, 0, 786433, 2, 0, 851969, 2, 0, 917505, 2, 0, 786434, 2, 0, 851970, 2, 0, 917506, 2, 0, 786435, 2, 0, 851971, 2, 0, 917507, 2, 0, 786436, 2, 0, 851972, 2, 0, 917508, 2, 0, 786437, 2, 0, 851973, 2, 0, 917509, 2, 0, 786438, 2, 0, 851974, 2, 0, 917510, 2, 0, 786439, 2, 0, 851975, 2, 0, 917511, 2, 0, 786440, 2, 0, 851976, 2, 0, 917512, 2, 0, 786441, 2, 0, 851977, 2, 0, 917513, 2, 0, 786442, 2, 0, 851978, 2, 0, 917514, 2, 0, 786443, 2, 0, 851979, 2, 0, 917515, 2, 0, 851980, 2, 0, 917516, 2, 0, 851981, 2, 0, 917517, 2, 0, 851982, 2, 0, 917518, 2, 0, 851983, 2, 0, 917519, 2, 0, 851984, 2, 0, 917520, 2, 0, 851985, 2, 0, 917521, 2, 0, 851986, 2, 0, 917522, 2, 0, 851987, 2, 0, 917523, 2, 0, 851988, 2, 0, 917524, 2, 0, 851989, 2, 0, 917525, 2, 0, 851990, 2, 0, 917526, 2, 0, 851991, 2, 0, 917527, 2, 0, 851992, 2, 0, 917528, 2, 0, 655362, 65538, 3, 655367, 65538, 3, 720917, 65538, 3, 720913, 2, 3, 655377, 65538, 3, 655365, 2, 3, 589829, 65538, 3, 720909, 2, 3, 655373, 65538, 3)
+
+[node name="player" parent="." unique_id=1186010361 instance=ExtResource("6_14wem")]
+position = Vector2(188, 283)
+scale = Vector2(4, 4)
+SPEED = 150.0
+
+[node name="Label" type="Label" parent="." unique_id=1930824862]
+offset_left = 870.0
+offset_top = 242.0
+offset_right = 1104.0
+offset_bottom = 327.0
+theme_override_fonts/font = ExtResource("7_2atga")
+text = "ZQSD : deplacement
+espace : saut"
+
+[node name="background" type="Node" parent="." unique_id=1236841661]
+
+[node name="Sprite2D2" type="Sprite2D" parent="background" unique_id=349521340]
+z_index = -2
+position = Vector2(576, 350)
+scale = Vector2(10.999999, 10.999999)
+texture = ExtResource("9_ictww")
+
+[node name="Sprite2D3" type="Sprite2D" parent="background" unique_id=1266929803]
+z_index = -1
+position = Vector2(576, 450)
+scale = Vector2(10.999999, 10.999999)
+texture = ExtResource("10_1o50l")
+
+[node name="Sprite2D" type="Sprite2D" parent="background" unique_id=351161686]
+z_index = -3
+position = Vector2(576, 324)
+scale = Vector2(11, 11)
+texture = ExtResource("8_hmxu4")
+
+[connection signal="pressed" from="menu_principal/Panel/VBoxContainer/TextureButton_play" to="menu_principal" method="_on_texture_button_play_pressed"]
+[connection signal="pressed" from="menu_principal/Panel/VBoxContainer/TextureButton_option" to="menu_principal" method="_on_texture_button_option_pressed"]
+[connection signal="pressed" from="menu_principal/Panel/VBoxContainer/TextureButton_quit" to="menu_principal" method="_on_texture_button_quit_pressed"]
+[connection signal="pressed" from="menu_parametre/Panel/VBoxContainer/TextureButton__retoure" to="menu_parametre" method="_on_texture_button__retoure_pressed"]
+[connection signal="pressed" from="menu_parametre/Panel/VBoxContainer/TextureButton_son" to="menu_parametre" method="_on_texture_button_son_pressed"]

@@ -9,6 +9,9 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f87vc"]
 size = Vector2(20, 17)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 73.0
+
 [node name="enemy" type="CharacterBody2D" unique_id=1359131004]
 z_index = 1
 input_pickable = true
@@ -30,9 +33,32 @@ vframes = 8
 target_position = Vector2(12, 0)
 
 [node name="Area2D_kill" type="Area2D" parent="." unique_id=708423045]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_kill" unique_id=2032314536]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_f87vc")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=672846643]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1459170033]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Timer" type="Timer" parent="." unique_id=1304243892]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="." unique_id=408431404]
+wait_time = 0.2
+one_shot = true
+
+[node name="Timer3" type="Timer" parent="." unique_id=98219140]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D_kill" to="." method="_on_area_2d_kill_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

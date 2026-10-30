@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://5431fqtlarwy"]
+
+[node name="UI" type="CanvasLayer" unique_id=1573241508]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1527699783]
+position = Vector2(392, 59)
+scale = Vector2(2, 2)
