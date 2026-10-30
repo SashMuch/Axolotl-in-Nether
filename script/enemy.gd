@@ -4,7 +4,7 @@ var speed = 2000
 var direction = 1
 var vie = 100
 const JUMP_VELOCITY = -200
-const special = true
+@export var special = true
 var player_entered = false
 var speed_dash = 300
 var direction_dash: Vector2 = Vector2.ZERO
@@ -78,7 +78,7 @@ func _on_area_2d_kill_body_entered(body: Node2D) -> void:
 func prendre_degats(degats):
 	vie -= degats
 
-	print("Vie de l'ennemi :", vie)
+	#print("Vie de l'ennemi :", vie)
 
 	if vie <= 0:
 		queue_free()

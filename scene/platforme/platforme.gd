@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
 var direction = 1
-const speed = 10000
+var speed = 5000
+@export var special = false
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+
+func _ready() -> void:
+	if special:
+		speed = 10000
 
 func _physics_process(delta: float) -> void:
 
