@@ -9,7 +9,7 @@ var speed = 5000
 
 func _ready() -> void:
 	if special:
-		speed = 10000
+		speed = 15000
 
 func _physics_process(delta: float) -> void:
 

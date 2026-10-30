@@ -11,6 +11,7 @@ var direction_dash: Vector2 = Vector2.ZERO
 var dashing = false
 var can_dash = true
 var souris_dans_zone = false
+@export var special_color : Color
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var position_initiale = sprite_2d.position
@@ -27,6 +28,7 @@ func _ready() -> void:
 	if special:
 		speed = 3000
 		vie = 200
+		sprite_2d.modulate = special_color
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

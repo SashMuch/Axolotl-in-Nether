@@ -4,6 +4,7 @@ var ralentire = false
 @export var SPEED = 300.0
 const JUMP_VELOCITY = -300
 var temps_tir = 0
+var can_ral = true
 
 """var dash_speed = 300
 var dashing = false
@@ -15,17 +16,26 @@ var can_dash = true"""
 @onready var marker_2d_2: Marker2D = $Marker2D2
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_agane_timer: Timer = $DashAganeTimer
+@onready var timer_ral: Timer = $TimerRal
+@onready var timer_ral_temp: Timer = $TimerRalTemp
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ralentire") and ralentire == false:
-		temp.vitesse = 0.2
-		ralentire = true
-		return
-	if Input.is_action_just_pressed("ralentire") and ralentire == true:
-		temp.vitesse = 1.0
-		ralentire = false
-		return
+	if Input.is_action_just_pressed("ralentire"):
+
+		if ralentire == false and can_ral:
+			temp.vitesse = 0.2
+			ralentire = true
+			timer_ral_temp.start()
+
+		elif ralentire == true:
+			arreter_ralentissement()
 		
+func arreter_ralentissement():
+	temp.vitesse = 1.0
+	ralentire = false
+	can_ral = false
+	timer_ral_temp.stop()
+	timer_ral.start()
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,6 +44,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("saut") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -113,3 +124,11 @@ func animation_ubdate(dir):
 
 func _on_dash_agane_timer_timeout() -> void:
 	can_dash = true"""
+
+
+func _on_timer_ral_timeout() -> void:
+	can_ral = true
+
+
+func _on_timer_ral_temp_timeout() -> void:
+	arreter_ralentissement()
