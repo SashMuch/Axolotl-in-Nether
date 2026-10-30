@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cee2lx01wfrym"]
 
+[ext_resource type="PackedScene" uid="uid://djvf1mt32edpg" path="res://scene/sound_manager.tscn" id="1_1o50l"]
 [ext_resource type="FontFile" uid="uid://yvfky04jek4q" path="res://asset/import/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_3er1b"]
 [ext_resource type="Script" uid="uid://b8tsxl638b6x8" path="res://script/menu.gd" id="2_2fwvj"]
 [ext_resource type="Texture2D" uid="uid://i86all3dwpiv" path="res://asset/import/hovered.png" id="2_hxu56"]
@@ -32,6 +33,8 @@ Label/fonts/font = ExtResource("1_3er1b")
 Panel/styles/panel = SubResource("StyleBoxFlat_57qmd")
 
 [node name="main_menu" type="CanvasLayer" unique_id=717449997]
+
+[node name="soundManager" parent="." unique_id=352558965 instance=ExtResource("1_1o50l")]
 
 [node name="menu_principal" type="Control" parent="." unique_id=212470678]
 z_index = 2
@@ -216,26 +219,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "RETOUR"
 
-[node name="TextureButton_son" type="TextureButton" parent="menu_parametre/Panel/VBoxContainer" unique_id=564975266]
+[node name="TextureButton_son" type="CheckButton" parent="menu_parametre/Panel/VBoxContainer" unique_id=995111122]
 layout_mode = 2
 size_flags_vertical = 3
-texture_normal = ExtResource("2_hxu56")
-texture_pressed = ExtResource("4_0iwki")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="menu_parametre/Panel/VBoxContainer/TextureButton_son" unique_id=1054834654]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
 text = "SON"
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1478191557]
@@ -282,4 +268,4 @@ texture = ExtResource("8_hmxu4")
 [connection signal="pressed" from="menu_principal/Panel/VBoxContainer/TextureButton_option" to="menu_principal" method="_on_texture_button_option_pressed"]
 [connection signal="pressed" from="menu_principal/Panel/VBoxContainer/TextureButton_quit" to="menu_principal" method="_on_texture_button_quit_pressed"]
 [connection signal="pressed" from="menu_parametre/Panel/VBoxContainer/TextureButton__retoure" to="menu_parametre" method="_on_texture_button__retoure_pressed"]
-[connection signal="pressed" from="menu_parametre/Panel/VBoxContainer/TextureButton_son" to="menu_parametre" method="_on_texture_button_son_pressed"]
+[connection signal="toggled" from="menu_parametre/Panel/VBoxContainer/TextureButton_son" to="menu_parametre" method="_on_texture_button_son_toggled"]

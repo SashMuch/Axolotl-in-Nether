@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bjukb0tddew2i"]
 
 [ext_resource type="Script" uid="uid://c02h0ttcfew3q" path="res://script/enemy.gd" id="1_f87vc"]
-[ext_resource type="Texture2D" uid="uid://bhto2b7rngwig" path="res://asset/import/brackeys_platformer_assets/sprites/TileMapPlaceholder.png" id="2_8u16h"]
+[ext_resource type="Texture2D" uid="uid://bdh5nuwfxbn5b" path="res://asset/import/brackeys_platformer_assets/sprites/2026-10-29-162924-Dessin_16_8.png" id="2_f87vc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(16, 16)
+size = Vector2(24, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f87vc"]
-size = Vector2(20, 17)
+size = Vector2(26, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 73.0
+radius = 97.020615
 
 [node name="enemy" type="CharacterBody2D" unique_id=1359131004]
 z_index = 1
@@ -18,29 +18,28 @@ input_pickable = true
 script = ExtResource("1_f87vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=911571241]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1946963024]
 position = Vector2(0, 9.536743e-07)
 scale = Vector2(2, 2)
-texture = ExtResource("2_8u16h")
-hframes = 8
-vframes = 8
+texture = ExtResource("2_f87vc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=800151168]
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=558466976]
-target_position = Vector2(12, 0)
+target_position = Vector2(16, 0)
 
 [node name="Area2D_kill" type="Area2D" parent="." unique_id=708423045]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_kill" unique_id=2032314536]
-position = Vector2(0, -0.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_f87vc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=672846643]
-collision_mask = 4
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1459170033]
 shape = SubResource("CircleShape2D_g4v7s")
@@ -57,6 +56,8 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="Area2D_kill" to="." method="_on_area_2d_kill_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

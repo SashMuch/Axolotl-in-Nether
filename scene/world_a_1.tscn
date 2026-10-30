@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://s5u7eqjfb64r"]
 
+[ext_resource type="PackedScene" uid="uid://bqbqq87pvjh27" path="res://scene/vue.tscn" id="1_03lke"]
+[ext_resource type="PackedScene" uid="uid://djvf1mt32edpg" path="res://scene/sound_manager.tscn" id="1_5nn0w"]
 [ext_resource type="Texture2D" uid="uid://bcjse5cjnmg0u" path="res://bg/2026-10-22-111414-Dessin_10_5.png" id="1_s2w75"]
 [ext_resource type="Texture2D" uid="uid://cgigvqyf817qk" path="res://bg/2026-10-24-132549-Dessin_10_6.png" id="2_e38d4"]
 [ext_resource type="PackedScene" uid="uid://chef8me20ggue" path="res://scene/charachter/player.tscn" id="2_q4oo8"]
@@ -11,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://bjukb0tddew2i" path="res://scene/enemy.tscn" id="11_s2w75"]
 [ext_resource type="PackedScene" uid="uid://5431fqtlarwy" path="res://scene/ui.tscn" id="12_5nn0w"]
 [ext_resource type="Script" uid="uid://bcaa1gobci48f" path="res://script/node.gd" id="12_e38d4"]
-[ext_resource type="Script" uid="uid://mhej8fkki5sq" path="res://script/point_light_2d.gd" id="13_5nn0w"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e38d4"]
-load_path = "res://.godot/imported/light (1).png-c366b3a7e415f97d467b46302400eb2f.ctex"
 
 [node name="world_A_1" type="Node2D" unique_id=686464101]
+
+[node name="vue" parent="." unique_id=1254717296 instance=ExtResource("1_03lke")]
+
+[node name="soundManager" parent="." unique_id=352558965 instance=ExtResource("1_5nn0w")]
 
 [node name="background" type="Node" parent="." unique_id=1787667845]
 
@@ -75,6 +77,7 @@ position = Vector2(328, 55)
 
 [node name="enemy" parent="." unique_id=1359131004 instance=ExtResource("11_s2w75")]
 position = Vector2(102, 32)
+scale = Vector2(0.7, 0.7)
 
 [node name="Node" type="Node" parent="." unique_id=1564651703]
 script = ExtResource("12_e38d4")
@@ -99,7 +102,3 @@ hide_sprite = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2050879453]
 color = Color(0, 0, 0, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1918659261]
-texture = SubResource("CompressedTexture2D_e38d4")
-script = ExtResource("13_5nn0w")

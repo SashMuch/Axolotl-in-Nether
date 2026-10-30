@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bqbqq87pvjh27"]
+
+[ext_resource type="Texture2D" uid="uid://c3e433k5j38pb" path="res://asset/import/light (1).png" id="1_g4a5m"]
+[ext_resource type="Script" uid="uid://xlgri1qsod3f" path="res://script/vue.gd" id="1_vw6nm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 31.06445
+
+[node name="vue" type="Node2D" unique_id=129288871]
+script = ExtResource("1_vw6nm")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1524318522]
+energy = 9.41
+texture = ExtResource("1_g4a5m")
+texture_scale = 0.3
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1877368207 groups=["souris"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=113142548]
+shape = SubResource("CircleShape2D_g4v7s")

@@ -10,6 +10,7 @@ var speed_dash = 300
 var direction_dash: Vector2 = Vector2.ZERO
 var dashing = false
 var can_dash = true
+var souris_dans_zone = false
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var position_initiale = sprite_2d.position
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * temp.vitesse
 	
-	if player_entered and dashing == false and can_dash and special:
+	if player_entered and souris_dans_zone and not dashing and can_dash and special:
 		sprite_2d.position = position_initiale + Vector2(
 		randf_range(-1, 1),
 		randf_range(-1, 1)
@@ -44,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	elif dashing == true and special:
 		if timer_2.is_stopped():
 			timer_2.start()
-		velocity = direction_dash * speed_dash
+		velocity = direction_dash * speed_dash * temp.vitesse
 		sprite_2d.position = position_initiale
 		
 	else:
@@ -62,11 +63,11 @@ func set_direction():
 		if collide.is_in_group("tilemap"):
 			if direction == 1:
 				direction = -1
-				ray_cast_2d.target_position = Vector2(-12,0)
+				ray_cast_2d.target_position = Vector2(-16,0)
 				sprite_2d.flip_h = true
 			else:
 				direction = 1
-				ray_cast_2d.target_position = Vector2(12,0)
+				ray_cast_2d.target_position = Vector2(16,0)
 				sprite_2d.flip_h = false
 
 
@@ -110,3 +111,13 @@ func _on_timer_3_timeout() -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "player":
 			player_entered = false
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("souris"):
+		souris_dans_zone = true
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("souris"):
+		souris_dans_zone = false

@@ -5,9 +5,9 @@ var ralentire = false
 const JUMP_VELOCITY = -300
 var temps_tir = 0
 
-var dash_speed = 300
+"""var dash_speed = 300
 var dashing = false
-var can_dash = true
+var can_dash = true"""
 
 @onready var animation_player: AnimationPlayer = $paramtre/animation/AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -39,18 +39,18 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("gauche", "droite")
-	if Input.is_action_just_pressed("dash") and can_dash:
+	"""if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		can_dash = false
 		dash_timer.start()
 		dash_agane_timer.start()
 	if dashing:
 		velocity.x = direction * dash_speed
+	else:"""
+	if direction:
+		velocity.x = direction * SPEED
 	else:
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	marker_2d_2.look_at(get_global_mouse_position())
 	temps_tir -= delta
@@ -107,9 +107,9 @@ func animation_ubdate(dir):
 			animation_player.play("RESET")
 
 
-func _on_dash_timer_timeout() -> void:
+"""func _on_dash_timer_timeout() -> void:
 	dashing = false
 
 
 func _on_dash_agane_timer_timeout() -> void:
-	can_dash = true
+	can_dash = true"""

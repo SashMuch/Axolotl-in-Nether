@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djvf1mt32edpg"]
+
+[ext_resource type="AudioStream" uid="uid://1xismd7ridv7" path="res://asset/import/brackeys_platformer_assets/music/Musique marimba.mp3" id="1_6i8hr"]
+
+[node name="soundManager" type="Node" unique_id=352558965]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1616961878]
+stream = ExtResource("1_6i8hr")
+volume_db = -10.0
+autoplay = true
