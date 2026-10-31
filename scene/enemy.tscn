@@ -16,7 +16,7 @@ radius = 97.020615
 z_index = 1
 input_pickable = true
 script = ExtResource("1_f87vc")
-special_color = Color(1, 0.30717325, 0.2899887, 1)
+special_color = Color(0.91034937, 0, 0.3792222, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=911571241]
 position = Vector2(0, 5)
