@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dhrex5ofq0k64"]
+
+[ext_resource type="Script" uid="uid://druh1ury0w36q" path="res://script/cheakpoint.gd" id="1_gnupt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(33, 33)
+
+[node name="Area2D" type="Area2D" unique_id=1377233841]
+collision_mask = 4
+script = ExtResource("1_gnupt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=196167727]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1724332369]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1755830258]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

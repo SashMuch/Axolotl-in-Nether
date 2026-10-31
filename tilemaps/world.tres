@@ -1,8 +1,14 @@
 [gd_resource type="TileSet" format=3 uid="uid://cl2b3wuroq36p"]
 
 [ext_resource type="Texture2D" uid="uid://bte1srwu2hxlm" path="res://asset/import/brackeys_platformer_assets/sprites/Test.png" id="1_f7gky"]
+[ext_resource type="Texture2D" uid="uid://bxgryuab821sb" path="res://asset/import/brackeys_platformer_assets/sprites/2026-10-30-101148-Dessin_16_44.png" id="1_phgv4"]
 [ext_resource type="Texture2D" uid="uid://dueyphajf6r7f" path="res://asset/import/brackeys_platformer_assets/sprites/TileMap-jeu2.png" id="2_vx7kv"]
 [ext_resource type="Texture2D" uid="uid://ciskw4iu2qjwh" path="res://asset/import/brackeys_platformer_assets/sprites/timemap espace.png" id="3_phgv4"]
+[ext_resource type="Texture2D" uid="uid://dey2f76hh33po" path="res://asset/import/brackeys_platformer_assets/sprites/2026-10-30-101157-Dessin_16_45.png" id="5_od5af"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dg2lk"]
+texture = ExtResource("1_phgv4")
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s2w75"]
 texture = ExtResource("1_f7gky")
@@ -100,9 +106,15 @@ texture = ExtResource("3_phgv4")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wg01r"]
+texture = ExtResource("5_od5af")
+0:0/0 = 0
+
 [resource]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_x1yic")
 sources/1 = SubResource("TileSetAtlasSource_s2w75")
 sources/2 = SubResource("TileSetAtlasSource_5nn0w")
+sources/0 = SubResource("TileSetAtlasSource_dg2lk")
+sources/4 = SubResource("TileSetAtlasSource_wg01r")

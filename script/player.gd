@@ -19,6 +19,10 @@ var can_dash = true"""
 @onready var timer_ral: Timer = $TimerRal
 @onready var timer_ral_temp: Timer = $TimerRalTemp
 
+func _ready():
+	if temp.checkpoint_actif:
+		global_position = temp.checkpoint_position
+
 func _process(_delta):
 	if Input.is_action_just_pressed("ralentire"):
 
