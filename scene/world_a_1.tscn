@@ -78,7 +78,7 @@ layer_0/tile_data = PackedInt32Array(196613, 196610, 1, 196614, 2, 2, 196615, 2,
 
 [node name="player" parent="." unique_id=1186010361 instance=ExtResource("2_q4oo8")]
 z_index = 1
-position = Vector2(2655, 221)
+position = Vector2(-18, 26)
 collision_layer = 4
 
 [node name="platforme" parent="." unique_id=1666111731 instance=ExtResource("9_x1yic")]
@@ -209,7 +209,6 @@ scene = "res://scene/world_a_2.tscn"
 hide_sprite = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2050879453]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=651227061]
