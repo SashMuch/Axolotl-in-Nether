@@ -136,3 +136,7 @@ func _on_timer_ral_timeout() -> void:
 
 func _on_timer_ral_temp_timeout() -> void:
 	arreter_ralentissement()
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://scene/main_menu.tscn")
